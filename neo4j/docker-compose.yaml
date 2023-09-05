@@ -1,0 +1,19 @@
+# Copyright VMware, Inc.
+# SPDX-License-Identifier: APACHE-2.0
+
+version: '2'
+networks:
+  neo4j-network:
+    driver: bridge
+
+services:
+  neo4j:
+    image: docker.io/bitnami/neo4j:5
+    networks:
+      - neo4j-network
+    ports:
+      - '7474:7474'
+      - '7473:7473'
+      - '7687:7687'
+    volumes:
+      - '/Users/delta/Documents/datastores/dockerdata/neo4j:/bitnami'

@@ -1,0 +1,17 @@
+version: '2'
+networks:
+  app-tier:
+    driver: bridge
+    
+services:
+  zookeeper:
+    image: 'bitnami/zookeeper:latest'
+    ports:
+      - '2181:2181'
+    volumes:
+      - /Users/delta/Documents/datastores/dockerdata/zookeeper:/bitnami/zookeeper
+    networks:
+      - app-tier  
+    environment:
+      # KRaft settings
+      - ALLOW_ANONYMOUS_LOGIN=yes  
