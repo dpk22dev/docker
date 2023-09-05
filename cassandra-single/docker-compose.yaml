@@ -1,4 +1,8 @@
 version: '2'
+networks:
+  app-tier:
+    driver: bridge
+
 services:
   cassandra:
     image: bitnami/cassandra:latest
@@ -10,3 +14,5 @@ services:
     ports:
       - 7000:7000
       - 9042:9042
+    networks:
+      - app-tier  

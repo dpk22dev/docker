@@ -15,10 +15,16 @@ docker run -it --rm \
 docker run -it --rm \
     --network kafka-without-zookeeper_app-tier \
     docker.io/bitnami/kafka:3.5 kafka-topics.sh --list  --bootstrap-server kafka-without-zookeeper-kafka-1:9092
-    
+
+### from local host below works
+notice that port is exposed by us in docker-compose file
+bin/kafka-topics.sh --describe --topic first_topic --bootstrap-server localhost:9094
+
 ### below don't
 docker run -it --rm docker.io/bitnami/kafka:3.5 kafka-topics.sh --list  --bootstrap-server kafka:9092
-docker run -it --rm docker.io/bitnami/kafka:3.5 kafka-topics.sh --list  --bootstrap-server localhost:9092
+docker run -it --rm docker.io/bitnami/kafka:3.5 kafka-topics.sh --list  --bootstrap-server localhost:9094
+
+
 
 ### if we go into running container's terminal below commands work:
 kafka-topics.sh --list  --bootstrap-server localhost:9092
